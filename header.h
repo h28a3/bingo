@@ -5,7 +5,7 @@
 #define M 15
 #define BINGO_SIZE 5
 
-int src[N][M], bingo[BINGO_SIZE][BINGO_SIZE];
+extern int src[N][M], bingo[BINGO_SIZE][BINGO_SIZE];
 
 void Initialization(void);
 
