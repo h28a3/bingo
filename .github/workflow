@@ -1,0 +1,31 @@
+name: C CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Ubuntu環境でビルドとテストを実行
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2  # リポジトリのコードを取得
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y gcc make  # GCCとmakeをインストール
+
+      - name: Build
+        run: |
+          mkdir build
+          cd build
+          gcc -o my_program ../src/main.c  # コードをコンパイル
+
+      - name: Run tests
+        run: |
+          cd build
+          ./my_program  # プログラムを実行してテスト
